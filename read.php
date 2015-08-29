@@ -15,13 +15,18 @@ if ($conn->connect_error) {
 $sql = "SELECT id, food FROM Test";
 $result = $conn->query($sql);
 
-$encode = array();
+$return = array();
+$return['success'] = false;
+$return['data'] = [];
 
 while($row = mysqli_fetch_assoc($result)) {
-   $encode[$row['id']][] = $row['food'];
+	$return['data'] = array(
+      	'id' => $row['id'],
+      	'food' => $row['food']
+   );
 }
 
-echo json_encode($encode);
+echo json_encode($return);
 
 //echo $result;
 
