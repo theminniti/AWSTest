@@ -15,13 +15,10 @@ if ($conn->connect_error) {
 $sql = "SELECT id, food FROM Test";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"] . " - Food: " . $row["food"] . "<br>";
-    }
-} else {
-    echo "0 results";
-}
+$response[success] = true;
+$response[data] = $result;
+
+echo json_encode($result);
+
 $conn->close();
 ?>
