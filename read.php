@@ -16,7 +16,7 @@ $sql = "SELECT id, food FROM Test";
 $result = $conn->query($sql);
 
 $return = array();
-$return['success'] = false;
+$return[success] = false;
 $data = [];
 
 while($row = mysqli_fetch_assoc($result)) {
@@ -26,7 +26,7 @@ while($row = mysqli_fetch_assoc($result)) {
    );
 }
 
-$return['data'] = $data;
+$return[data] = $data;
 
 echo json_encode($return);
 

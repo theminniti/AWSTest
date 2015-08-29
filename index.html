@@ -8,8 +8,9 @@
 			$(document).ready(function(){
 
 				$.ajax({
-					method: 'GET'
+					method: 'GET',
 					url: "read.php",
+					dataType: "json",
 					success: function(res){
 						console.log(res);
 					}
