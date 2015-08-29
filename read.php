@@ -17,14 +17,16 @@ $result = $conn->query($sql);
 
 $return = array();
 $return['success'] = false;
-$return['data'] = [];
+$data = [];
 
 while($row = mysqli_fetch_assoc($result)) {
-	$return['data'] = array(
+	$data[] = array(
       	'id' => $row['id'],
       	'food' => $row['food']
    );
 }
+
+$return['data'] = $data;
 
 echo json_encode($return);
 
