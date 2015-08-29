@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, food FROM Test";
+$sql = mysql_query("SELECT id, food FROM Test");
 
 $results = array();
 while($row = mysql_fetch_array($sql))
