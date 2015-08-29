@@ -13,25 +13,17 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT id, food FROM Test";
-$result = $conn->query($sql);
 
-$response[success] = true;
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-
-		$response[data] = array(
-			'id' => $row['id'],
-		 	'food' => $row['food']
-		);
-    }
-} else {
-    echo "0 results";
+$results = array();
+while($row = mysql_fetch_array($sql))
+{
+   $results[] = array(
+      'id' => $row['id'],
+      'food' => $row['food']
+   );
 }
-
-
-echo json_encode($result);
+$json = json_encode($results);
+echo $json;
 
 $conn->close();
 ?>
