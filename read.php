@@ -12,18 +12,23 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = mysql_query("SELECT id, food FROM Test");
+$sql = "SELECT id, food FROM Test";
+$result = $conn->query($sql);
 
-$results = array();
-while($row = mysql_fetch_array($sql))
-{
-   $results[] = array(
-      'id' => $row['id'],
-      'food' => $row['food']
-   );
-}
-$json = json_encode($results);
-echo $json;
+echo $result;
+
+// $sql = mysql_query("SELECT id, food FROM Test");
+//
+// $results = array();
+// while($row = mysql_fetch_array($sql))
+// {
+//    $results[] = array(
+//       'id' => $row['id'],
+//       'food' => $row['food']
+//    );
+// }
+// $json = json_encode($results);
+// echo $json;
 
 $conn->close();
 ?>
