@@ -16,7 +16,20 @@ $sql = "SELECT id, food FROM Test";
 $result = $conn->query($sql);
 
 $response[success] = true;
-$response[data] = $result;
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+		$response[data] = array(
+			'id' => $row['id'],
+		 	'food' => $row['food']
+		);
+    }
+} else {
+    echo "0 results";
+}
+
 
 echo json_encode($result);
 
